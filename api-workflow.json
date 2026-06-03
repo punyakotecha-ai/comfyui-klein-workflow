@@ -1,1 +1,392 @@
-{"76":{"inputs":{},"class_type":"LoadImage","_meta":{"title":"subject"}},"81":{"inputs":{},"class_type":"LoadImage","_meta":{"title":"outfit_image"}},"94":{"inputs":{"images":["124",0],"filename_prefix":"Flux2_Klein_9b_kv"},"class_type":"SaveImage","_meta":{"title":"SaveImage"}},"122":{"inputs":{"sampler_name":"euler"},"class_type":"KSamplerSelect","_meta":{"title":"KSamplerSelect"}},"123":{"inputs":{"noise":["125",0],"guider":["138",0],"sampler":["122",0],"sigmas":["137",0],"latent_image":["129",0]},"class_type":"SamplerCustomAdvanced","_meta":{"title":"SamplerCustomAdvanced"}},"124":{"inputs":{"samples":["123",0],"vae":["127",0]},"class_type":"VAEDecode","_meta":{"title":"VAEDecode"}},"125":{"inputs":{"noise_seed":1049225694379050},"class_type":"RandomNoise","_meta":{"title":"RandomNoise"}},"126":{"inputs":{"unet_name":"flux-2-klein-9b-kv-fp8.safetensors","weight_dtype":"default"},"class_type":"UNETLoader","_meta":{"title":"UNETLoader"}},"127":{"inputs":{"vae_name":"flux2-vae.safetensors"},"class_type":"VAELoader","_meta":{"title":"VAELoader"}},"128":{"inputs":{"image":["130",0]},"class_type":"GetImageSize","_meta":{"title":"GetImageSize"}},"129":{"inputs":{"width":["128",0],"height":["128",1],"batch_size":1},"class_type":"EmptyFlux2LatentImage","_meta":{"title":"EmptyFlux2LatentImage"}},"130":{"inputs":{"image":["76",0],"upscale_method":"lanczos","megapixels":1,"resolution_steps":1},"class_type":"ImageScaleToTotalPixels","_meta":{"title":"ImageScaleToTotalPixels"}},"131":{"inputs":{"image":["81",0],"upscale_method":"lanczos","megapixels":1,"resolution_steps":1},"class_type":"ImageScaleToTotalPixels","_meta":{"title":"ImageScaleToTotalPixels"}},"132":{"inputs":{"conditioning":["134",0],"conditioning_1":["134",1],"pixels":["131",0],"vae":["127",0]},"class_type":"93041a64-452a-477a-9447-40330b7c1136","_meta":{"title":"93041a64-452a-477a-9447-40330b7c1136"}},"133":{"inputs":{"clip_name":"qwen_3_8b_fp8mixed.safetensors","type":"flux2","device":"default"},"class_type":"CLIPLoader","_meta":{"title":"CLIPLoader"}},"134":{"inputs":{"conditioning":["135",0],"conditioning_1":["685",0],"pixels":["130",0],"vae":["127",0]},"class_type":"27eacb9f-0da2-421d-a0bf-b4b4e5fe5709","_meta":{"title":"27eacb9f-0da2-421d-a0bf-b4b4e5fe5709"}},"135":{"inputs":{"clip":["133",0],"text":"Have the man in Figure 1 put on the Polo tshirt from Figure 2, maintaining the pattern and color, keep the background same, Preserve his exact facial structure, skin tone, hair, beard, \nbody build, and standing pose, natural lighting consistent with the original scene."},"class_type":"CLIPTextEncode","_meta":{"title":"CLIP Text Encode (Positive Prompt)"}},"137":{"inputs":{"width":["128",0],"height":["128",1],"steps":5},"class_type":"Flux2Scheduler","_meta":{"title":"Flux2Scheduler"}},"138":{"inputs":{"model":["139",0],"positive":["132",0],"negative":["132",1],"cfg":1.2},"class_type":"CFGGuider","_meta":{"title":"CFGGuider"}},"139":{"inputs":{"model":["126",0]},"class_type":"FluxKVCache","_meta":{"title":"FluxKVCache"}},"685":{"inputs":{"conditioning":["135",0]},"class_type":"ConditioningZeroOut","_meta":{"title":"ConditioningZeroOut"}}}
+{
+  "76": {
+    "inputs": {
+      "image": "pasted/image (51).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "subject"
+    }
+  },
+  "81": {
+    "inputs": {
+      "image": "shopping (2).webp"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "outfit_image"
+    }
+  },
+  "94": {
+    "inputs": {
+      "filename_prefix": "Flux2_Klein_9b_kv",
+      "images": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "122": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "123": {
+    "inputs": {
+      "noise": [
+        "125",
+        0
+      ],
+      "guider": [
+        "138",
+        0
+      ],
+      "sampler": [
+        "122",
+        0
+      ],
+      "sigmas": [
+        "137",
+        0
+      ],
+      "latent_image": [
+        "129",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "124": {
+    "inputs": {
+      "samples": [
+        "123",
+        0
+      ],
+      "vae": [
+        "127",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "125": {
+    "inputs": {
+      "noise_seed": 802845310498135
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "126": {
+    "inputs": {
+      "unet_name": "flux-2-klein-9b-kv-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "127": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "128": {
+    "inputs": {
+      "image": [
+        "130",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "129": {
+    "inputs": {
+      "width": [
+        "128",
+        0
+      ],
+      "height": [
+        "128",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "Empty Flux 2 Latent"
+    }
+  },
+  "130": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1,
+      "resolution_steps": 1,
+      "image": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "ImageScaleToTotalPixels"
+    }
+  },
+  "131": {
+    "inputs": {
+      "upscale_method": "lanczos",
+      "megapixels": 1,
+      "resolution_steps": 1,
+      "image": [
+        "81",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "ImageScaleToTotalPixels"
+    }
+  },
+  "133": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "135": {
+    "inputs": {
+      "text": "\nThe woman in the left panel is now wearing the outfit (gold necklace) shown in the right panel.\n\nIdentity preserved exactly from the left panel:\nface, eyes, expression, skin tone, and body proportions are completely unchanged.\n\nThe outfit fits her frame naturally. Fabric drapes realistically with no floating edges.\nPose, hands, and stance are identical to the left panel.\nBackground and scene lighting preserved exactly from the left panel.\n\nPhotorealistic, sharp focus, 8k.",
+      "clip": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "137": {
+    "inputs": {
+      "steps": 5,
+      "width": [
+        "128",
+        0
+      ],
+      "height": [
+        "128",
+        1
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2Scheduler"
+    }
+  },
+  "138": {
+    "inputs": {
+      "cfg": 1.3,
+      "model": [
+        "139",
+        0
+      ],
+      "positive": [
+        "132:121",
+        0
+      ],
+      "negative": [
+        "132:119",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFGGuider"
+    }
+  },
+  "139": {
+    "inputs": {
+      "model": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "FluxKVCache",
+    "_meta": {
+      "title": "Flux KV Cache"
+    }
+  },
+  "685": {
+    "inputs": {
+      "conditioning": [
+        "135",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "693": {
+    "inputs": {
+      "compare_view": {
+        "beforeImages": [
+          "/api/view?filename=comfy.compare.a_temp_jsssv_00001_.png&subfolder=&type=temp&rand=0.25048757874423644"
+        ],
+        "afterImages": [
+          "/api/view?filename=comfy.compare.b_temp_jsssv_00001_.png&subfolder=&type=temp&rand=0.25048757874423644"
+        ]
+      },
+      "image_a": [
+        "76",
+        0
+      ],
+      "image_b": [
+        "124",
+        0
+      ]
+    },
+    "class_type": "ImageCompare",
+    "_meta": {
+      "title": "Image Compare"
+    }
+  },
+  "695": {
+    "inputs": {
+      "text": "different face, altered eyes, changed expression, modified hairstyle,\nwrong skin tone, lightened or darkened skin, ill-fitting kurti,\nfloating fabric, unnatural drape, stiff fabric, wrong neckline shape,\nchanged background, different lighting, color grading, warm filter,\ncool filter, tonal shift, desaturated, oversaturated, film grain,\ndeformed hands, missing fingers, bad anatomy, blurry, watermark, text, cartoon, more than 2 hands, abnormal fingers",
+      "clip": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "134:116": {
+    "inputs": {
+      "conditioning": [
+        "695",
+        0
+      ],
+      "latent": [
+        "134:117",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "134:117": {
+    "inputs": {
+      "pixels": [
+        "130",
+        0
+      ],
+      "vae": [
+        "127",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "134:118": {
+    "inputs": {
+      "conditioning": [
+        "135",
+        0
+      ],
+      "latent": [
+        "134:117",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "132:119": {
+    "inputs": {
+      "conditioning": [
+        "134:116",
+        0
+      ],
+      "latent": [
+        "132:120",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "132:120": {
+    "inputs": {
+      "pixels": [
+        "131",
+        0
+      ],
+      "vae": [
+        "127",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "132:121": {
+    "inputs": {
+      "conditioning": [
+        "134:118",
+        0
+      ],
+      "latent": [
+        "132:120",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  }
+}
